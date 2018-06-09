@@ -40,7 +40,8 @@
     "build": "cross-env NODE_PATH=src npm-run-all build-css build-js",
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-app-rewired eject",
-    "server": "NODE_PATH=src node server/index.js",
-    "deploy": "npm run build && npm run server"
+    "server": "cross-env NODE_ENV=production NODE_PATH=src node server/index.js",
+    "deploy": "npm run build && npm run server",
+    "heroku-postbuild": "npm run build"
   }
 }
