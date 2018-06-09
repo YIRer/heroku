@@ -13,7 +13,7 @@ const extractAssets = (assets, chunks) => Object.keys(assets)
 	.filter(asset => chunks.indexOf(asset.replace('.js', '')) > -1)
 	.map(k => assets[k]);
     
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const app = express();
 const router = express.Router();
 
