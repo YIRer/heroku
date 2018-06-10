@@ -19,6 +19,8 @@ const router = express.Router();
 
 app.use(nocache())
 
+app.get('*.*', express.static(path.join(__dirname)));
+
 router.get('/', render);
 
 router.use(express.static(
