@@ -6,7 +6,7 @@ import App from 'features/App/components/App';
 import { Provider } from 'react-redux';
 import configureStore from 'configureStore.prod';
 import manifest from '../build/asset-manifest.json';
-// import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet'
 import serialize from 'serialize-javascript';
 import sagas from 'rootSagas';
 
@@ -48,12 +48,12 @@ module.exports = async (req,res) => {
 								</StaticRouter>
 						</Loadable.Capture>
 				)
-				// const helmet = Helmet.renderStatic();
+				const helmet = Helmet.renderStatic();
 				const extraChunks = extractAssets(manifest, modules).map(c => `<script type="text/babel" src="./${c}" ></script>`);
 				const state = store.getState();
 				return await res.send(
 					htmlData
-						// .replace(`<html lang="en" itemscope>`,`<html ${helmet.htmlAttributes.toString()} itemscope>`)
+						.replace(`<html lang="en" itemscope>`,`<html ${helmet.htmlAttributes.toString()} itemscope>`)
 						.replace('<div id="root"></div>', 
 							`
 								<div id="root">${html}</div>
@@ -62,7 +62,7 @@ module.exports = async (req,res) => {
 							`
 					)
 				.replace('</body>', extraChunks.join('') + '</body>')
-				// .replace('<meta helmet>', `${helmet.title.toString()}${helmet.meta.toString()}${helmet.link.toString()}`)
+				.replace('<meta helmet>', `${helmet.title.toString()}${helmet.meta.toString()}${helmet.link.toString()}`)
 			);
 		});
 		store.close()

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import Helmet from 'react-helmet';
 export class Event extends Component {
   constructor(props){
     super(props);
@@ -13,6 +13,9 @@ export class Event extends Component {
   render() {
     return (
       <div>
+        <Helmet>
+          <title>헬멧테스트</title>
+        </Helmet>
         <input type="text" onChange = { (e)=>this.handleInput(e) } />
       </div>
     )
