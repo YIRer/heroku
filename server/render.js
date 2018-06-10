@@ -54,15 +54,16 @@ module.exports = async (req,res) => {
 				return await res.send(
 					htmlData
 						.replace(`<html lang="en" itemscope>`,`<html ${helmet.htmlAttributes.toString()} itemscope>`)
+						.replace('<meta helmet>', `${helmet.title.toString()}${helmet.meta.toString()}${helmet.link.toString()}`)
 						.replace('<div id="root"></div>', 
 							`
 								<div id="root">${html}</div>
 								<script>window.__PRELOADED_STATE__=${serialize(state)}</script>
 								${loadableState.getScriptTag()}
 							`
-					)
-				.replace('</body>', extraChunks.join('') + '</body>')
-				.replace('<meta helmet>', `${helmet.title.toString()}${helmet.meta.toString()}${helmet.link.toString()}`)
+						)
+						.replace('</body>', extraChunks.join('') + '</body>')
+				
 			);
 		});
 		store.close()
