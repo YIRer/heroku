@@ -25,5 +25,6 @@ const mapStateToProps = state => {
     title: state.event.title
   };
 };
+
 App = connect(mapStateToProps, null)(App)
 export default hot(module)(App);

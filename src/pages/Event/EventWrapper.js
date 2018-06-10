@@ -12,11 +12,19 @@ export class EventWrapper extends Component {
       <div>
         <Event
           setTitle = { this.props.setTitleString }
+          {...this.props}
         />
       </div>
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    data: state.event.current
+  };
+};
+
 const mapDispatchToProps = dispatch => ({
   ...bindActionCreators(
     {
@@ -26,4 +34,4 @@ const mapDispatchToProps = dispatch => ({
   )
 });
 
-export default connect(null, mapDispatchToProps)(EventWrapper);
+export default connect(mapStateToProps, mapDispatchToProps)(EventWrapper);
