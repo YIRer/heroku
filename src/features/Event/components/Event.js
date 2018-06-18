@@ -45,6 +45,7 @@ export class Event extends Component {
             ]
           }
         />
+        <h1>{ data.title }</h1>
         <input type="text" onChange = { (e)=>this.handleInput(e) } />
         <div>
           { this.renderData() }
