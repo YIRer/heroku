@@ -30,11 +30,20 @@ export class Event extends Component {
     }
   }
   render() {
+    const { data } = this.props;
+    const mapData = Object.keys(data);
+    const hasData = mapData.length > 0 ;
     return (
       <div>
         <Helmet
           htmlAttributes={{lang:"ko"}}
           title = { "helmet test" }
+          meta = {
+            [
+              { name: 'author', content: 'helmeTest' },
+              { name: 'description' , content:`${hasData ? data.body : "hehe"}` }
+            ]
+          }
         />
         <input type="text" onChange = { (e)=>this.handleInput(e) } />
         <div>
