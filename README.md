@@ -7,3 +7,5 @@
 ### npm run build : build App
 
 ### npm run server : run server-side-rendering
+
+[참조](https://marmelab.com/blog/2017/10/17/code-splitting.html)
