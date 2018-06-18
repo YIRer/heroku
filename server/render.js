@@ -53,6 +53,7 @@ module.exports = async (req,res) => {
 				const state = store.getState();
 				return await res.send(
 					htmlData
+						.replace('</body>', extraChunks.join('') + '</body>')
 						.replace(`<html lang="en" itemscope>`,`<html ${helmet.htmlAttributes.toString()} itemscope>`)
 						.replace('<meta helmet>', `${helmet.title.toString()}${helmet.meta.toString()}${helmet.link.toString()}`)
 						.replace('<div id="root"></div>', 
@@ -62,7 +63,7 @@ module.exports = async (req,res) => {
 								${loadableState.getScriptTag()}
 							`
 						)
-						.replace('</body>', extraChunks.join('') + '</body>')
+						
 				
 			);
 		});
