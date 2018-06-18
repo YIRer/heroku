@@ -32,9 +32,10 @@ export class Event extends Component {
   render() {
     return (
       <div>
-        <Helmet>
-          <title>헬멧테스트</title>
-        </Helmet>
+        <Helmet
+          htmlAttributes={{lang:"ko"}}
+          title = { "helmet test" }
+        />
         <input type="text" onChange = { (e)=>this.handleInput(e) } />
         <div>
           { this.renderData() }
