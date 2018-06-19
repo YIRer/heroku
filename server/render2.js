@@ -23,6 +23,8 @@ const extractAssets = (assets, chunks) => Object.keys(assets)
 
 module.exports = async (req,res) => {
   const filePath = path.resolve(__dirname,  '..', 'build/', 'index.html');
+  res.setHeader('Content-Type', 'text/event-stream');
+  res.setHeader('Cache-Control', 'no-cache');
   fs.readFile(filePath, 'utf8', async (err, htmlData) => {
       const modules = [];
       const store = configureStore();

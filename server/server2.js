@@ -15,10 +15,7 @@ function shouldCompress(req, res) {
   return compression.filter(req, res);
 }
 
-app.use(compression({
-  level: 2,               // set compression level from 1 to 9 (6 by default)
-  filter: shouldCompress, // set predicate to determine whether to compress
-}));
+app.use(compression({level: 2}));
 
 app.get('*.*', express.static(path.join(__dirname)));
 
