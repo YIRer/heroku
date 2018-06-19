@@ -10,6 +10,11 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 const router = express.Router();
 
+function shouldCompress(req, res) {
+  if (req.headers["x-no-compression"]) return false;
+  return compression.filter(req, res);
+}
+
 app.use(compression({
   level: 2,               // set compression level from 1 to 9 (6 by default)
   filter: shouldCompress, // set predicate to determine whether to compress
