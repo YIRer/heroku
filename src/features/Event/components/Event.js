@@ -3,8 +3,8 @@ import Helmet from 'react-helmet';
 export class Event extends Component {
   constructor(props){
     super(props);
-    props.getTypeDefineRequest(1)
     this.handleInput =  this.handleInput.bind(this);
+    this.renderData =  this.renderData.bind(this);
   }
   handleInput(e){
     e.preventDefault();
@@ -30,9 +30,8 @@ export class Event extends Component {
     }
   }
   render() {
+
     const { data } = this.props;
-    const mapData = Object.keys(data);
-    const hasData = mapData.length > 0 ;
     return (
       <div>
         <Helmet
@@ -41,7 +40,7 @@ export class Event extends Component {
           meta = {
             [
               { name: 'author', content: 'helmeTest' },
-              { name: 'description' , content:`${hasData ? data.body : "hehe"}` }
+              { name: 'description' , content:`${data.body}` }
             ]
           }
         />

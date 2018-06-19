@@ -10,7 +10,11 @@ function Loading(props) {
   }
 }
 
-const LoadableEvent = Loadable({
+export const LoadableNoPost = Loadable({
+  loader: () => import('pages/Event/NoPost'),
+  loading : Loading
+});
+export const LoadableEvent = Loadable({
   loader: () => import('pages/Event/EventWrapper'),
   loading : Loading
 });
@@ -20,6 +24,11 @@ export const routes = [
     path: '/',
     exact: true,
     component: LoadableEvent
+  },
+  {
+    path: '*',
+    exact: true,
+    component: LoadableNoPost
   }
 ]
 

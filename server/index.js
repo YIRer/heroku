@@ -14,4 +14,4 @@ require('babel-register')({
 });
 
 // Now that the nonsense is over... load up the server entry point
-require('./server');
+require('./server2');

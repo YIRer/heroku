@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { Switch } from "react-router-dom";
-import { routes } from "routes/index.async";
-import { renderRoutes } from "react-router-config";
+import { Switch, Route } from "react-router-dom";
+import * as Routes from "routes/index.async";
 import { hot } from 'react-hot-loader'
 import './App.css';
 
@@ -14,7 +13,10 @@ class App extends Component {
           <h1 className="App-title">{this.props.title}</h1>
         </header>
         <main>
-          <Switch>{renderRoutes(routes)}</Switch>
+          <Switch>
+            <Route path="/" exact component = { Routes.LoadableEvent }></Route>
+            <Route path="*" exact component = { Routes.LoadableNoPost }></Route>
+          </Switch>
         </main>
       </div>
     );

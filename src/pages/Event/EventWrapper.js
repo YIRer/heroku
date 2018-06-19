@@ -7,13 +7,22 @@ import { actions as eventActions } from "features/Event/actions";
 import Event from 'features/Event/components/Event'
 
 export class EventWrapper extends Component {
+  constructor(props){
+    super(props);
+    props.getTypeDefineRequest(1)
+  }
   render() {
     return (
       <div>
-        <Event
-          setTitle = { this.props.setTitleString }
-          {...this.props}
-        />
+        {
+          Object.keys(this.props.data).length > 0 ? (
+            <Event
+              setTitle = { this.props.setTitleString }
+              {...this.props}
+            />
+          ):null
+        }
+        
       </div>
     )
   }
